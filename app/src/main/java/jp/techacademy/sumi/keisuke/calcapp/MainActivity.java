@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else{
             Toast.makeText(this, "数字が入力されていません。正しく入力してください。", Toast.LENGTH_LONG).show();
         }
+        //
 
 
     }
