@@ -88,24 +88,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent = new Intent(theActivity, CalcActivity.class);
         if (v.getId() == R.id.plus) {
-            intent.putExtra(CalcActivity.Calc,plus);
+            intent.putExtra(CalcActivity.Calc, plus);
         } else if (v.getId() == R.id.minus) {
-            intent.putExtra(CalcActivity.Calc,minus);
+            intent.putExtra(CalcActivity.Calc, minus);
         } else if (v.getId() == R.id.times) {
-            intent.putExtra(CalcActivity.Calc,times);
+            intent.putExtra(CalcActivity.Calc, times);
         } else if (v.getId() == R.id.divided) {
-            intent.putExtra(CalcActivity.Calc,divided);
+            intent.putExtra(CalcActivity.Calc, divided);
+
         }
-        if(numstr1.getText().length()!=0&&numstr2.getText().length()!=0){
-            double num1=Double.valueOf(String.valueOf(numstr1.getText()));
-            double num2=Double.valueOf(String.valueOf(numstr2.getText()));
-            intent.putExtra(CalcActivity.Num1,num1);
-            intent.putExtra(CalcActivity.Num2,num2);
-            startActivity(intent);
+        if (numstr1.getText().length() != 0 && numstr2.getText().length() != 0) {
+            if(v.getId() == R.id.divided&&String.valueOf(numstr2.getText()).equals("0")){
+                Toast.makeText(this, "割り算の際に0は入力できません。", Toast.LENGTH_LONG).show();
+            }else{
+                double num1 = Double.valueOf(String.valueOf(numstr1.getText()));
+                double num2 = Double.valueOf(String.valueOf(numstr2.getText()));
+                intent.putExtra(CalcActivity.Num1, num1);
+                intent.putExtra(CalcActivity.Num2, num2);
+                startActivity(intent);
+            }
         }else{
             Toast.makeText(this, "数字が入力されていません。正しく入力してください。", Toast.LENGTH_LONG).show();
         }
-        //
+
 
 
     }
